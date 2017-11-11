@@ -1,0 +1,8 @@
+<div class="container">
+
+  add a new act <%= link_to material_icon.add_box, new_act_path %>
+
+  <% @acts.each do |act| %>
+      <%= render 'acts/act', act: act %>
+  <% end %>
+</div>

@@ -1,0 +1,31 @@
+<%= form_with(model: @act) do |form| %>
+
+    <% if @act.errors.any? %>
+        <div id="error_explanation">
+          <h2>
+            <%= pluralize(@act.errors.count, "error") %> prohibited
+            this act from being saved:
+          </h2>
+          <ul>
+            <% @act.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <div class="row">
+      <div class="input-field col s12">
+        <%= form.label :title %><br>
+        <%= form.text_field :title %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <%= form.label :text %><br>
+        <%= form.text_area :text, class: 'materialize-textarea' %>
+      </div>
+    </div>
+    <div class="row">
+      <%= form.submit class: 'btn waves-effect waves-light' %>
+    </div>
+<% end %>
