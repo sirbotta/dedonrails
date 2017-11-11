@@ -1,0 +1,12 @@
+<div class="container">
+
+  <%= render @act %>
+
+  <h2>Chapters</h2>
+  <% @act.chapters.each do |chapter| %>
+      <%= render chapter %>
+  <% end %>
+
+  <%= link_to 'Add a new chapter', new_act_chapter_path(@act) %>
+
+</div>
