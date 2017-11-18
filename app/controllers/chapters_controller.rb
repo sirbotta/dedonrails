@@ -1,4 +1,4 @@
-class ChaptersController < ApplicationController
+class ChaptersController < ProtectedController
 
   def create
     @act = Act.find(params[:act_id])

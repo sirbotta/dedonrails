@@ -1,4 +1,5 @@
-class HomeController < ApplicationController
+class HomeController < ProtectedController
+
   def index
   end
 end

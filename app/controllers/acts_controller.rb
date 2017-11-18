@@ -1,4 +1,4 @@
-class ActsController < ApplicationController
+class ActsController < ProtectedController
 
   def index
     @acts = Act.all.includes(:chapters)
