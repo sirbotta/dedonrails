@@ -1,0 +1,29 @@
+<%= form_for([@adventure, @party]) do |form| %>
+    <% if @party.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(party.errors.count, "error") %> prohibited this party from being saved:</h2>
+
+          <ul>
+            <% @party.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="row">
+      <div class="input-field col s12">
+        <%= form.label :name %><br>
+        <%= form.text_field :name %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <%= form.label :max_members %><br>
+        <%= form.number_field :max_members %>
+      </div>
+    </div>
+    <div class="row">
+      <%= form.submit class: 'btn waves-effect waves-light' %>
+    </div>
+<% end %>

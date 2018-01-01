@@ -1,0 +1,37 @@
+<%= form_for([@chapter, @challenge]) do |form| %>
+
+    <% if @challenge.errors.any? %>
+        <div id="error_explanation">
+          <h2>
+            <%= pluralize(@challenge.errors.count, "error") %> prohibited
+            this act from being saved:
+          </h2>
+          <ul>
+            <% @challenge.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <div class="row">
+      <div class="input-field col s12">
+        <%= form.label :title %><br>
+        <%= form.text_field :title %>
+      </div>
+    </div>
+    <div class="row">
+      <%= radio_button_tag(:ch_type, "exploration") %>
+      <%= label_tag(:ch_type_exploration, "Exploration") %>
+      <%= radio_button_tag(:ch_type, "skill") %>
+      <%= label_tag(:ch_type_skill, "Skill") %>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <%= form.label :text %><br>
+        <%= form.text_area :text, class: 'materialize-textarea' %>
+      </div>
+    </div>
+    <div class="row">
+      <%= form.submit class: 'btn waves-effect waves-light' %>
+    </div>
+<% end %>

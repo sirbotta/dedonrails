@@ -1,0 +1,17 @@
+<div class="container">
+  <h1>My Characters</h1>
+
+  <% @characters.each do |character| %>
+
+      <div class="row">
+        <div class="col s8 ">
+          <%= render 'characters/character', character: character %>
+        </div>
+      </div>
+
+
+  <% end %>
+  <div class="divider"></div>
+
+  <%= link_to 'New Character', new_character_path %>
+</div>

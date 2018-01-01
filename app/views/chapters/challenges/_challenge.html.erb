@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="col s12">
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title"><%= challenge.title %></span>
+        <p>
+          <%= challenge.text %>
+        </p>
+        <%= render 'chapters/challenges/challengeable', challengeable: challenge.challengeable %>
+      </div>
+    </div>
+  </div>
+</div>

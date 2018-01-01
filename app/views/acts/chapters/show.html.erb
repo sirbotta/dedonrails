@@ -1,0 +1,21 @@
+<nav>
+  <div class="nav-wrapper">
+    <div class="col s12">
+      <%= link_to 'Adventures', adventures_path, class: 'breadcrumb' %>
+      <%= link_to @chapter.act.adventure.title, adventure_path(@chapter.act.adventure), class: 'breadcrumb' %>
+      <%= link_to @chapter.act.title, act_path(@chapter.act), class: 'breadcrumb' %>
+      <%= link_to @chapter.title, chapter_path(@chapter), class: 'breadcrumb' %>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <%= render @chapter %>
+
+  <h2>Challenges</h2>
+  <% @chapter.challenges.each do |challenge| %>
+      <%= render 'chapters/challenges/challenge', challenge: challenge %>
+  <% end %>
+
+  <%= link_to 'Add a new challenge', new_chapter_challenge_path(@chapter) %>
+</div>

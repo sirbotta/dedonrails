@@ -1,0 +1,8 @@
+<div class="container">
+
+  <% @adventures.each do |adventure| %>
+      <%= render 'adventures/adventure', adventure: adventure %>
+  <% end %>
+
+  <p>add a new adventure <%= link_to material_icon.add, new_adventure_path, class: "btn-floating btn-large waves-effect waves-light red" %><p>
+</div>

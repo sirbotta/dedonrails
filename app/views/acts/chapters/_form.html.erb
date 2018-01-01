@@ -1,4 +1,4 @@
-<%= form_with(model: [@act,@chapter]) do |form| %>
+<%= form_for([@adventure, @act, @chapter]) do |form| %>
 
     <% if @act.errors.any? %>
         <div id="error_explanation">

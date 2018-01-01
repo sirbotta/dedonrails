@@ -1,0 +1,31 @@
+<nav>
+  <div class="nav-wrapper">
+    <div class="col s12">
+      <%= link_to 'Adventures', adventures_path, class: 'breadcrumb' %>
+      <%= link_to @adventure.title, adventure_path(@adventure), class: 'breadcrumb' %>
+    </div>
+  </div>
+</nav>
+<div class="container">
+
+  <p>DM: <%= @adventure.dm.email %> </p>
+  <p>Party: <%= link_to  @adventure.party.name, adventure_party_path(@adventure,@adventure.party) if @adventure.party %> </p>
+
+  <ul class="collapsible" data-collapsible="expandable">
+    <li>
+      <div class="collapsible-header active"><%= @adventure.title %></div>
+      <div class="collapsible-body"><span><%= render @adventure %></span></div>
+    </li>
+    <% @adventure.acts.each do |act| %>
+        <li>
+          <div class="collapsible-header"><%= 'Act: '+act.title %></div>
+          <div class="collapsible-body"><span><%= render 'adventures/acts/act', act: act %></span></div>
+        </li>
+
+    <% end %>
+  </ul>
+  <%= link_to 'Add a new Act', new_adventure_act_path(@adventure) %>
+  <%= link_to 'Add a the party', new_adventure_party_path(@adventure) unless @adventure.party %>
+
+
+</div>

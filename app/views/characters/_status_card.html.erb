@@ -1,0 +1,16 @@
+<div class="card-panel">
+  <div class="row">
+    <div class="col s4">
+      <h5 class="center-align">Armor Class</h5>
+      <div class="center-align"><%= character.armor_class %></div>
+    </div>
+    <div class="col s4">
+      <h5 class="center-align">Initiative</h5>
+      <div class="center-align"><%= sprintf('%+d', character.initiative) %></div>
+    </div>
+    <div class="col s4">
+      <h5 class="center-align">Health Points</h5>
+      <div class="center-align"><%= character.current_hp %>/<%= character.max_hp %></div>
+    </div>
+  </div>
+</div>

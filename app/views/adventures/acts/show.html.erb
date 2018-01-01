@@ -1,0 +1,22 @@
+<nav>
+  <div class="nav-wrapper">
+    <div class="col s12">
+      <%= link_to 'Adventures', adventures_path, class: 'breadcrumb' %>
+      <%= link_to @act.adventure.title, adventure_path(@act.adventure), class: 'breadcrumb' %>
+      <%= link_to @act.title, act_path(@act), class: 'breadcrumb' %>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+
+  <%= render @act %>
+
+  <h2>Chapters</h2>
+  <% @act.chapters.each do |chapter| %>
+      <%= render 'acts/chapters/chapter', chapter: chapter %>
+  <% end %>
+
+  <%= link_to 'Add a new chapter', new_act_chapter_path(@act) %>
+
+</div>

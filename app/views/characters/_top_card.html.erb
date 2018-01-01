@@ -1,0 +1,83 @@
+<div class="col s6">
+  <div class="card horizontal">
+    <div class="card-image">
+      <%= image_tag(image_path('cleric_example.png'), size: '250x250') %>
+    </div>
+    <div class="card-stacked">
+      <div class="card-content">
+        <h3 class="center-align"><%= character.name %></h3>
+        <h5>Adventure: <%= link_to character.party.adventure.title, character.party.adventure %></h5>
+        <h5>Party: <%= link_to character.party.name, character.party %></h5>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="col s6">
+  <div class="card-panel">
+    <div class="row">
+      <div class="col s4">
+        <h5 class="center-align">Class</h5>
+        <div class="center-align"><%= t(character.dnd_class) %> <%= character.level %></div>
+      </div>
+      <div class="col s4">
+        <h5 class="center-align">Background</h5>
+        <div class="center-align"><%= t character.dnd_background %></div>
+      </div>
+      <div class="col s4">
+        <h5 class="center-align">Player</h5>
+        <div class="center-align"><%= character.owner.email %></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s4">
+        <h5 class="center-align">Race</h5>
+        <div class="center-align"><%= t character.gender %> <%= t character.dnd_race %></div>
+      </div>
+      <div class="col s4">
+        <h5 class="center-align">Alignment</h5>
+        <div class="center-align"><%= t character.dnd_alignment %></div>
+      </div>
+      <div class="col s4">
+        <h5 class="center-align">Experience
+          <a class="modal-trigger" href="#modal_edit_experience"><%= material_icon.edit %></a></h5>
+        <div class="center-align"><%= character.experience %>
+          <% if character.level_up? %>
+              <a class="modal-trigger" href="#modal_level_up"><%= material_icon.person_add %></a>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="modal_edit_experience" class="modal">
+  <div class="modal-content">
+    <%= form_with(model: character, local: true) do |form| %>
+        <div class="row">
+          <h5>Edit Experience Points</h5>
+          <div class="input-field col s2">
+            <%= form.label :experience %>
+            <%= form.number_field :experience, id: :character_experience %>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <%= form.submit class: 'btn' %>
+        </div>
+    <% end %>
+  </div>
+</div>
+<div id="modal_level_up" class="modal">
+  <div class="modal-content">
+    <%= form_with(model: character, local: true) do |form| %>
+        <div class="row">
+          <h5>Edit Character Skills (Pick Max <%= character.max_available_skills %>)</h5>
+          <div class="input-field col s2">
+            <%= form.label :level %>
+            <%= form.number_field :level, id: :character_level %>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <%= form.submit class: 'btn' %>
+        </div>
+    <% end %>
+  </div>
+</div>

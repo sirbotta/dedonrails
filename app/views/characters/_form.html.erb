@@ -1,0 +1,94 @@
+<%= form_with(model: character, local: true) do |form| %>
+    <% if character.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(character.errors.count, "error") %> prohibited this character from being saved:</h2>
+
+          <ul>
+            <% character.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="divider"></div>
+    <h5>Choose an available party</h5>
+    <div class="row">
+      <div class="input-field col s2">
+        <%= form.select :party_id, Party.all.map {|p| [p.name, p.id]}, id: :character_party_id %>
+        <%= form.label :party_id %>
+      </div>
+    </div>
+    <div class="section">
+      <div class="row">
+        <div class="input-field col s2">
+          <%= form.label :name %>
+          <%= form.text_field :name, id: :character_name %>
+        </div>
+        <div class="input-field col s2">
+          <%= form.label :gender %>
+          <%= form.text_field :gender, id: :character_gender %>
+        </div>
+        <div class="input-field col s2">
+          <%= form.select :dnd_class, DndRules::CLASSES.keys.map {|k| [t(k), k]}, id: :character_dnd_class %>
+          <%= form.label :dnd_class %>
+        </div>
+
+        <div class="input-field col s2">
+          <%= form.select :dnd_race, DndRules::RACES.keys.map {|k| [t(k), k]}, id: :character_dnd_race %>
+          <%= form.label :dnd_race %>
+        </div>
+
+        <div class="input-field col s2">
+          <%= form.select :dnd_alignment, DndRules::ALIGNMENTS.keys.map {|k| [t(k), k]}, id: :character_dnd_alignment %>
+          <%= form.label :dnd_alignment %>
+        </div>
+
+        <div class="input-field col s2">
+          <%= form.select :dnd_background, DndRules::BACKGROUNDS.keys.map {|k| [t(k), k]}, id: :character_dnd_background %>
+          <%= form.label :dnd_background %>
+        </div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="row">
+      <div class="col s8">
+        <div class="section">
+          <h5>Character Ability Scores</h5>
+          <div class="row">
+            <div class="input-field col s2">
+              <%= form.label :str %>
+              <%= form.number_field :str, id: :character_str %>
+            </div>
+            <div class="input-field col s2">
+              <%= form.label :dex %>
+              <%= form.number_field :dex, id: :character_dex %>
+            </div>
+            <div class="input-field col s2">
+              <%= form.label :cos %>
+              <%= form.number_field :cos, id: :character_cos %>
+            </div>
+            <div class="input-field col s2">
+              <%= form.label :int %>
+              <%= form.number_field :int, id: :character_int %>
+            </div>
+            <div class="input-field col s2">
+              <%= form.label :wis %>
+              <%= form.number_field :wis, id: :character_wis %>
+            </div>
+            <div class="input-field col s2">
+              <%= form.label :cha %>
+              <%= form.number_field :cha, id: :character_cha %>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+<% end %>

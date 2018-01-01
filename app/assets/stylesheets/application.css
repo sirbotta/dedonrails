@@ -14,9 +14,3 @@
  *= require material_icons
  *= require_self
  */
-
-
-.turbolinks-progress-bar {
-    height: 5px;
-    background-color: green;
-}

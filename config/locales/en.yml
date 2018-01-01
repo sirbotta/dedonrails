@@ -30,4 +30,33 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  ### Abilities
+  str: "Strength"
+  dex: "Dexterity"
+  cos: "Constitution"
+  int: "Intelligence"
+  wis: "Wisdom"
+  cha: "Charisma"
+  ### Skills
+  acrobatics: "Acrobatics"
+  animal_handling: "Animal Handling"
+  arcana: "Arcana"
+  athletics: "Athletics"
+  deception: "Deception"
+  history: "History"
+  insight: "Insight"
+  intimidation: "Intimidation"
+  medicine: "Medicine"
+  nature: "Nature"
+  perception: "perception"
+  performance: "Performance"
+  persuasion: "Persuasion"
+  religion: "Religion"
+  sleight_of_hand: "Sleight of Hand"
+  stealth: "Stealth"
+  survival: "Survival"
+  ### Races
+  human: "Human"
+  high_elf: "High Elf"
+  hill_dwarf: "Hill Dwarf"
+

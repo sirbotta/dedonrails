@@ -1,0 +1,33 @@
+<nav>
+  <div class="nav-wrapper">
+    <div class="col s12">
+      <%= link_to 'Adventures', adventures_path, class: 'breadcrumb' %>
+      <%= link_to @party.adventure.title, adventure_path(@party.adventure), class: 'breadcrumb' %>
+      <%= link_to @party.name, adventure_party_path(@party), class: 'breadcrumb' %>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <p>
+    <strong>Adventure:</strong>
+    <%= @party.name %>
+    <%= @party.max_members %>
+  </p>
+  <h1>Party Members</h1>
+
+  <% @party.characters.each do |character| %>
+
+      <div class="row">
+        <div class="col s8 ">
+          <%= render 'characters/character', character: character %>
+        </div>
+      </div>
+
+
+  <% end %>
+  <div class="divider"></div>
+
+  <%= link_to 'New Character', new_character_path %>
+
+  <%= link_to 'Edit', edit_adventure_party_path(@party.adventure, @party) %> |
+</div>

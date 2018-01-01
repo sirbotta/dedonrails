@@ -1,0 +1,42 @@
+<div class="card">
+  <div class="card-content">
+    <span class="card-title">Skills  <a class="modal-trigger" href="#modal_edit_skills"><%= material_icon.edit %></a></span>
+    <table>
+      <thead>
+      <tr>
+        <th>Proficient</th>
+        <th>Bonus</th>
+        <th>Skill</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% character.all_skills.each do |skill, val| %>
+          <tr>
+            <td><%= val[:proficient] ? material_icon.check_box : material_icon.check_box_outline_blank %></td>
+            <td><%= sprintf('%+d', val[:bonus]) %></td>
+            <td><%= t skill %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div id="modal_edit_skills" class="modal">
+  <div class="modal-content">
+    <%= form_with(model: character, local: true) do |form| %>
+        <div class="row">
+          <h5>Edit Character Skills (Pick Max <%= character.max_available_skills %>)</h5>
+          <% character.available_skills.each do |skl| %>
+              <div class="input-field col s2">
+                <%= form.check_box "skill_#{skl}".to_sym, id: "character_skill_#{skl}".to_sym %>
+                <%= form.label("skill_#{skl}".to_sym, t(skl), for: "character_skill_#{skl}".to_sym, id: "character_skill_#{skl}".to_sym) %>
+              </div>
+          <% end %>
+        </div>
+        <div class="modal-footer">
+          <%= form.submit class: 'btn' %>
+        </div>
+    <% end %>
+  </div>
+</div>

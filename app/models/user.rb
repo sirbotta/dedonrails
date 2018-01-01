@@ -3,7 +3,7 @@ class User < ApplicationRecord
   after_create :set_default_roles
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :confirmable
+         :recoverable, :rememberable, :trackable, :validatable#, #:confirmable
 
   has_many :user_roles, dependent: :destroy, class_name: "UserRole"
 
@@ -25,5 +25,9 @@ class User < ApplicationRecord
 
   def user?
     user_roles.pluck(:role).include? :user
+  end
+
+  def full_name
+    "#{first_name} #{last_name}"
   end
 end

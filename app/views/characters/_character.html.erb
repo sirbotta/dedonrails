@@ -1,0 +1,26 @@
+<div class="card">
+  <div class="card-content">
+    <span class="card-title"><%= link_to character.name, character %></span>
+    <div class="row">
+      <div class="col s4">
+        <%= image_tag(image_path('cleric_example.png'), size: '200x200', class: 'circle') %>
+      </div>
+      <div class="col s6">
+        <p>
+          Class: <%= character.dnd_class %> <%= character.level %>
+        </p>
+        <p>
+          Exp: <%= character.experience %>
+        </p>
+        <p>
+          Player: <%= character.owner.email %>
+        </p>
+        <p>Adventure: <%= link_to character.party.adventure.title, character.party.adventure %></p>
+        <p>Party: <%= link_to character.party.name, character.party %></p>
+      </div>
+    </div>
+    <div class="card-action">
+      <%= link_to 'Destroy', character, method: :delete, data: {confirm: 'Are you sure?'} %>
+    </div>
+  </div>
+</div>
