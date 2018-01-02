@@ -1,4 +1,4 @@
-class DiceRoll < ApplicationRecord
+class DieRoll < ApplicationRecord
 
   belongs_to :rollable, polymorphic: true
 

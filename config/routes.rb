@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
   resources :characters
-  resources :actions
   devise_for :users
 
   get 'home/index'
@@ -23,6 +22,12 @@ Rails.application.routes.draw do
   resources :chapters, except: [:index], controller: 'acts/chapters' do
     resources :challenges, except: [:index], controller: 'chapters/challenges'
   end
+
+  resources :challenges, except: [:index], controller: 'chapters/challenges' do
+    resources :player_actions, except: [:index], controller: 'challenges/player_actions'
+  end
+
+  resources :player_actions, except: [:index], controller: 'challenges/player_actions'
 
   root 'home#index'
 # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

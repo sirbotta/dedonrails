@@ -1,18 +1,37 @@
+<h3>Exploration Challenge</h3>
+
+<% exploration.player_actions.each do |player_action| %>
+    <%= render 'chapters/challenges/action_card', player_action: player_action %>
+<% end %>
+
 <a class="modal-trigger" href="#modal_exploration<%= exploration.id %>_action">Add Action
   (<%= exploration.party.find_character_by_user_id(current_user.id).try(:name) %>)</a>
 
 <div id="modal_exploration<%= exploration.id %>_action" class="modal">
   <div class="modal-content">
-    <%= form_with(model: exploration.actions.build, local: true) do |form| %>
+    <%= form_with(model: [exploration.challenge, exploration.player_actions.build], local: true) do |form| %>
         <div class="row">
           <h5><%= exploration.party.find_character_by_user_id(current_user.id).try(:name) %> Do something</h5>
-          <div class="input-field col s2">
-            <%= form.select :action_type, exploration.class::POSSIBLE_ACTIONS, id: :action_action_type %>
-            <%= form.label :action_type %>
-          </div>
-          <div class="input-field col s2">
-            <%= form.text_area :description %>
-            <%= form.label :description %>
+
+          <% exploration.class::TASKS.each do |action, val| %>
+              <div class="row">
+                <div class="input-field col s8">
+                  <%= form.radio_button(:task_type, action, id: "player_action_task_type_#{action}") %>
+                  <%= form.label("task_type_#{action}".to_sym, t(action) + " (#{t(val[:skill])} " + ' ' +
+                      sprintf('%+d',exploration.party.find_character_by_user_id(current_user.id).all_skills[val[:skill].to_sym][:bonus]) + '): ' +
+                      val[:description]) %>
+                </div>
+                <div class="input-field col 4">
+                  <%= form.select :targetable_id, [['Lollo', '1'], ['Trullo', '2']], id: :targetable_id %>
+                  <%= form.label :targetable_id %>
+                </div>
+              </div>
+          <% end %>
+          <div class="row">
+            <div class="input-field col s8">
+              <%= form.text_area :description, class: 'materialize-textarea' %>
+              <%= form.label :description %>
+            </div>
           </div>
         </div>
         <div class="modal-footer">

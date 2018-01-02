@@ -1,6 +1,6 @@
-class CreateDiceRolls < ActiveRecord::Migration[5.1]
+class CreateDieRolls < ActiveRecord::Migration[5.1]
   def change
-    create_table :dice_rolls do |t|
+    create_table :die_rolls do |t|
       t.integer :faces, default: 20
       t.integer :number, default: 1
       t.integer :modifier, default: 0

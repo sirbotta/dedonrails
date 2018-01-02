@@ -137,7 +137,11 @@ class Character < ApplicationRecord
         },
         insight: {
             proficient: skill_insight,
-            bonus: calc_save_bonus(skill_insight, int_bonus)
+            bonus: calc_save_bonus(skill_insight, wis_bonus)
+        },
+        investigation: {
+            proficient: skill_investigation,
+            bonus: calc_save_bonus(skill_investigation, int_bonus)
         },
         intimidation: {
             proficient: skill_intimidation,
@@ -188,12 +192,12 @@ class Character < ApplicationRecord
     level.times do |lvl|
       class_features += DndRules::CLASSES[dnd_class.to_sym][:levels][(lvl+1).to_s.to_sym].fetch(:features, [])
     end
-    background_features = DndRules::BACKGROUNDS[dnd_background.to_sym].fetch(:features, [])
+    background_features = DndRules::BACKGROUNDS.fetch(dnd_background.to_sym,{}).fetch(:features, [])
     race_features + class_features + background_features
   end
 
   def known_skills
-    ks = DndRules::BACKGROUNDS[dnd_background.to_sym].fetch(:skills, [])
+    ks = DndRules::BACKGROUNDS.fetch(dnd_background.to_sym,{}).fetch(:skills, [])
 
     if all_features.include?('keen_senses')
       ks << 'perception'

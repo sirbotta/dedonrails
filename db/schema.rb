@@ -12,19 +12,6 @@
 
 ActiveRecord::Schema.define(version: 20171228191036) do
 
-  create_table "actions", force: :cascade do |t|
-    t.text "description"
-    t.text "action_type"
-    t.text "resolution"
-    t.string "actionable_type"
-    t.integer "actionable_id"
-    t.integer "character_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["actionable_type", "actionable_id"], name: "index_actions_on_actionable_type_and_actionable_id"
-    t.index ["character_id"], name: "index_actions_on_character_id"
-  end
-
   create_table "acts", force: :cascade do |t|
     t.string "title"
     t.text "text"
@@ -118,7 +105,7 @@ ActiveRecord::Schema.define(version: 20171228191036) do
     t.index ["user_id"], name: "index_characters_on_user_id"
   end
 
-  create_table "dice_rolls", force: :cascade do |t|
+  create_table "die_rolls", force: :cascade do |t|
     t.integer "faces", default: 20
     t.integer "number", default: 1
     t.integer "modifier", default: 0
@@ -130,7 +117,7 @@ ActiveRecord::Schema.define(version: 20171228191036) do
     t.integer "rollable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["rollable_type", "rollable_id"], name: "index_dice_rolls_on_rollable_type_and_rollable_id"
+    t.index ["rollable_type", "rollable_id"], name: "index_die_rolls_on_rollable_type_and_rollable_id"
   end
 
   create_table "explorations", force: :cascade do |t|
@@ -146,6 +133,22 @@ ActiveRecord::Schema.define(version: 20171228191036) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["adventure_id"], name: "index_parties_on_adventure_id"
+  end
+
+  create_table "player_actions", force: :cascade do |t|
+    t.text "description"
+    t.text "task_type"
+    t.text "resolution"
+    t.string "actionable_type"
+    t.integer "actionable_id"
+    t.string "targetable_type"
+    t.integer "targetable_id"
+    t.integer "character_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["actionable_type", "actionable_id"], name: "index_player_actions_on_actionable_type_and_actionable_id"
+    t.index ["character_id"], name: "index_player_actions_on_character_id"
+    t.index ["targetable_type", "targetable_id"], name: "index_player_actions_on_targetable_type_and_targetable_id"
   end
 
   create_table "user_roles", force: :cascade do |t|

@@ -13,7 +13,7 @@
   <%= render @chapter %>
 
   <h2>Challenges</h2>
-  <% @chapter.challenges.each do |challenge| %>
+  <% @chapter.challenges.order(id: :desc).each do |challenge| %>
       <%= render 'chapters/challenges/challenge', challenge: challenge %>
   <% end %>
 

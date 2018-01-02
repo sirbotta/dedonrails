@@ -1,8 +1,3 @@
-<% case challengeable %>
-<% when Exploration %>
-    <%= render('chapters/challenges/exploration_challenge', exploration: challengeable) %>
-<% else %>
-    None
-<% end %>
+<%= render("chapters/challenges/#{challengeable.class.name.underscore}_challenge", challengeable.class.name.underscore.to_sym => challengeable) %>
 
 

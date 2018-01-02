@@ -26,8 +26,8 @@
           <%= form.text_field :name, id: :character_name %>
         </div>
         <div class="input-field col s2">
+          <%= form.select :gender, [['Male', 'male'], ['Female', 'female']], id: :gender %>
           <%= form.label :gender %>
-          <%= form.text_field :gender, id: :character_gender %>
         </div>
         <div class="input-field col s2">
           <%= form.select :dnd_class, DndRules::CLASSES.keys.map {|k| [t(k), k]}, id: :character_dnd_class %>

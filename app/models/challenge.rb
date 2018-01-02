@@ -1,17 +1,11 @@
 class Challenge < ApplicationRecord
   belongs_to :chapter
   belongs_to :challengeable, polymorphic: true
+  has_many :targetable
 
   def generate_challengeable(ch_type)
-    case ch_type
-      when 'exploration'
-        self.challengeable = Exploration.new
-      else
-        nil
-    end
-    self.challengeable
+    self.challengeable = ch_type.classify.constantize.new # remember to add the correct model
   end
-
 
   def act
     chapter.act
