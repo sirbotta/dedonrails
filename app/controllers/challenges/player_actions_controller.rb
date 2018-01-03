@@ -20,7 +20,7 @@ module Challenges
       @challengeable = Challenge.find(params[:challenge_id]).challengeable ###  challenge 1 -> Exploration 1
       @player_action = @challengeable.player_actions.build(player_action_params)
       @player_action.character_id = @challengeable.party.find_character_by_user_id(current_user.id).id
-      @player_action.targetable = @challengeable # TODO needs to implement the real targetable
+      #@player_action.targetable = @challengeable # TODO needs to implement the real targetable
 
       respond_to do |format|
         if @player_action.save
@@ -58,7 +58,7 @@ module Challenges
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def player_action_params
-      params.require(:player_action).permit(:description, :task_type, :targetable_id)
+      params.require(:player_action).permit!
     end
   end
 end

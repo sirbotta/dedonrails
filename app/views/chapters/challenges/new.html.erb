@@ -1,4 +1,47 @@
-<h1>New Challenge</h1>
+<div class="container">
+  <div class="row">
+    <h1>New Challenge</h1>
 
-<%= render 'chapters/challenges/form', challenge: @challenge %>
+
+    <ul class="collapsible popout" data-collapsible="accordion">
+      <li>
+        <div class="collapsible-header"><i class="material-icons">explore</i>Exploration</div>
+        <div class="collapsible-body">
+          <%= form_for([@chapter, @challenge]) do |form| %>
+              <div class="row">
+                <div class="input-field col s12">
+                  <%= form.label :title %><br>
+                  <%= form.text_field :title %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <%= form.label :text %><br>
+                  <%= form.text_area :text, class: 'materialize-textarea' %>
+                </div>
+              </div>
+              <div class="row">
+                <%= form.hidden_field :challengeable_type, value: "Exploration" %>
+              </div>
+              <div class="row">
+                <%= form.submit class: 'btn waves-effect waves-light' %>
+              </div>
+          <% end %>
+        </div>
+      </li>
+      <li>
+        <div class="collapsible-header"><i class="material-icons">directions_run</i>Skill</div>
+        <div class="collapsible-body">
+
+        </div>
+      </li>
+      <li>
+        <div class="collapsible-header"><i class="material-icons">record_voice_over</i>Interaction</div>
+        <div class="collapsible-body">
+
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
 

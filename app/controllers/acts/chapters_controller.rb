@@ -35,6 +35,7 @@ module Acts
 
     def show
       @chapter = Chapter.find(params[:id])
+      @npcs = @chapter.npcs
     end
 
     private

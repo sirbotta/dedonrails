@@ -60,4 +60,7 @@ en:
   human: "Human"
   high_elf: "High Elf"
   hill_dwarf: "Hill Dwarf"
+  ### Exploration Tasks
+  investigate: "Investigate"
+  Interrogate: "Interrogate"
 

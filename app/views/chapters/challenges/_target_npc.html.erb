@@ -1,0 +1,5 @@
+<div class="input-field col 4">
+  <%= form.select :targetable_id, @npcs.map {|n| [n.name, n.id]}, id: :targetable_id %>
+  <%= form.label :targetable_id %>
+</div>
+<%= form.hidden_field :targetable_type, value: 'Npc' %>

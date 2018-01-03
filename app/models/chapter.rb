@@ -3,6 +3,10 @@ class Chapter < ApplicationRecord
 
   has_many :challenges
 
+  def npcs
+    act.npcs
+  end
+
   def adventure
     act.adventure
   end

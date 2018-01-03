@@ -1,0 +1,36 @@
+<%= form_for([@adventure, @act, @npc]) do |form| %>
+
+    <% if @npc.errors.any? %>
+        <div id="error_explanation">
+          <h2>
+            <%= pluralize(@act.errors.count, "error") %> prohibited
+            this act from being saved:
+          </h2>
+          <ul>
+            <% @act.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <div class="row">
+      <div class="input-field col s12">
+        <%= form.label :name %><br>
+        <%= form.text_field :name %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <%= form.label :description %><br>
+        <%= form.text_area :description, class: 'materialize-textarea' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <%= form.file_field :avatar %>
+      </div>
+    </div>
+    <div class="row">
+      <%= form.submit class: 'btn waves-effect waves-light' %>
+    </div>
+<% end %>

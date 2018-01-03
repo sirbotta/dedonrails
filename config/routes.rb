@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
   resources :acts, except: [:index], controller: 'adventures/acts' do
     resources :chapters, except: [:index], controller: 'acts/chapters'
+    resources :npcs, except: [:index], controller: 'acts/npcs'
   end
 
   resources :chapters, except: [:index], controller: 'acts/chapters' do
@@ -27,6 +28,7 @@ Rails.application.routes.draw do
     resources :player_actions, except: [:index], controller: 'challenges/player_actions'
   end
 
+  resources :npcs, except: [:index], controller: 'acts/npcs'
   resources :player_actions, except: [:index], controller: 'challenges/player_actions'
 
   root 'home#index'

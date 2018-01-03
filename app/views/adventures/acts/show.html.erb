@@ -19,4 +19,23 @@
 
   <%= link_to 'Add a new chapter', new_act_chapter_path(@act) %>
 
+  <h2>Npcs</h2>
+
+  <table>
+    <thead>
+    <tr>
+      <th>Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @act.npcs.each do |npc| %>
+        <tr>
+          <td><%= npc.name %><%= link_to material_icon.edit, edit_npc_path(npc) %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+  <%= link_to 'Add a new Npc', new_act_npc_path(@act) %>
+
 </div>

@@ -22,6 +22,9 @@ character.save
 act = adventure.acts.build(title: "Atto 1", text: 'Atto di prova')
 act.save
 
+npc = act.npcs.build(name: 'Npc 1', description: 'Npc di prova')
+npc.save
+
 chapter = act.chapters.build(title: 'Capitolo 1', text: 'Capitolo di prova')
 chapter.save
 

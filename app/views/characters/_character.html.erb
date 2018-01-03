@@ -3,7 +3,7 @@
     <span class="card-title"><%= link_to character.name, character %></span>
     <div class="row">
       <div class="col s4">
-        <%= image_tag(image_path('cleric_example.png'), size: '200x200', class: 'circle') %>
+        <%= image_tag(character.avatar.url(:thumb), class: 'circle') %>
       </div>
       <div class="col s6">
         <p>

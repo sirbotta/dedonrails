@@ -10,12 +10,17 @@
 </nav>
 
 <div class="container">
-  <%= render @chapter %>
+  <div class="row">
+    <div class="col s8">
+      <% @chapter.challenges.order(id: :desc).each do |challenge| %>
+          <%= render 'chapters/challenges/challenge', challenge: challenge %>
+      <% end %>
 
-  <h2>Challenges</h2>
-  <% @chapter.challenges.order(id: :desc).each do |challenge| %>
-      <%= render 'chapters/challenges/challenge', challenge: challenge %>
-  <% end %>
+      <%= link_to 'Add a new challenge', new_chapter_challenge_path(@chapter) %>
+    </div>
+    <div class="col s4">
+      <%= render 'chapter_summary', chapter: @chapter %>
+    </div>
 
-  <%= link_to 'Add a new challenge', new_chapter_challenge_path(@chapter) %>
+  </div>
 </div>
