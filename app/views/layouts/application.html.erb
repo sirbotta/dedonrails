@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Dedonrails</title>
+    <title>D&D on rails</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,12 +9,23 @@
   </head>
 
   <body>
+  <header>
   <% flash.each do |message_type, message| %>
       <%= javascript_tag "Materialize.toast('#{message}', 4000)" %>
   <% end %>
-    <%= render 'shared/top_nav' %>
-    <%= yield %>
+  <%= render 'shared/top_nav' %>
+  </header>
 
+  <main>
+  <%= yield %>
+  </main>
 
+  <footer class="page-footer blue-grey darken-4">
+    <div class="footer-copyright">
+      <div class="container">
+        © 2017 Copyright MyBotta Corp.
+      </div>
+    </div>
+  </footer>
   </body>
 </html>
