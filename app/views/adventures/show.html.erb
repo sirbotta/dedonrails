@@ -1,5 +1,5 @@
-<nav>
-  <div class="nav-wrapper">
+<nav class="breadcrumb-bar">
+  <div class="nav-wrapper row">
     <div class="col s12">
       <%= link_to 'Adventures', adventures_path, class: 'breadcrumb' %>
       <%= link_to @adventure.title, adventure_path(@adventure), class: 'breadcrumb' %>
@@ -26,6 +26,4 @@
   </ul>
   <%= link_to 'Add a new Act', new_adventure_act_path(@adventure) %>
   <%= link_to 'Add a the party', new_adventure_party_path(@adventure) unless @adventure.party %>
-
-
 </div>
