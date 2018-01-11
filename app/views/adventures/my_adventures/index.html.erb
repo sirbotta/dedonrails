@@ -1,8 +1,21 @@
-<div class="container">
+<div id="my_adventures" class="container">
+  <div class="section">
+    <div class="row">
 
-  <% @adventures.each do |adventure| %>
-      <%= render 'adventures/adventure', adventure: adventure %>
-  <% end %>
+      <div class="col s12 m4 l3 ">
+        <div id="create_adventure" class="card">
+          <div class="card-content">
+            <span class="grey-text lighten-4">
+              <%= link_to "Click here to create a new adventure", new_adventure_path %><br>
+              <%= link_to material_icon.add, new_adventure_path, class: "btn-floating btn-large waves-effect waves-light teal add_adv_btn" %>
+            </span>
+          </div>
+        </div>
+      </div>
 
-  <p>add a new adventure <%= link_to material_icon.add, new_adventure_path, class: "btn-floating btn-large waves-effect waves-light red" %><p>
+      <% @adventures.each do |adventure| %>
+        <%= render 'adventures/adventure', adventure: adventure %>
+      <% end %>
+    </div>
+  </div>
 </div>

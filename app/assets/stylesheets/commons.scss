@@ -9,6 +9,14 @@ body {
     flex-direction: column;
 }
 
+a:link, a:visited, a:active {
+  color: teal !important;
+}
+
+a:hover {
+  color: #00bbbb !important;
+}
+
 #common-nav {
   background-color: #263238;
   color: #f5f5f5;

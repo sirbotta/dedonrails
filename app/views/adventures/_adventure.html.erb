@@ -1,8 +1,8 @@
-<div class="col s12 m4 ">
+<div class="col s12 m3 ">
   <div class="card">
     <div class="card-content">
-      <span class="card-title activator grey-text text-darken-4"><%= adventure.title %>
-        <i class="material-icons right">more_vert</i></span>
+      <span class="card-title activator grey-text text-darken-4">
+        <%= adventure.title %></span>
       <p>
         <%= adventure.sub_title %>
       </p>
@@ -14,13 +14,6 @@
                     data: {confirm: 'Are you sure?'} %>
         <%= link_to material_icon.arrow_back, adventures_path %>
       </div>
-    </div>
-    <div class="card-reveal">
-      <span class="card-title grey-text text-darken-4">Acts<i class="material-icons right">close</i></span>
-
-      <% adventure.acts.each do |act| %>
-          <p><%= link_to act.title, act_path(act) %></p>
-      <% end %>
     </div>
   </div>
 </div>

@@ -1,3 +1,24 @@
 // Place all the styles related to the adventures controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#my_adventures .card div {
+  height: 200px;
+  text-align: center;
+}
+
+#my_adventures #create_adventure {
+  box-shadow: none;
+  border: #273238 dashed 2px;
+  background-color: rgba(255,255,255,0.3);
+}
+
+#my_adventures #create_adventure .card {
+  height: inherit;
+  background-color: rgba(255,255,255,0.3);
+}
+
+#my_adventures .add_adv_btn {
+  margin: 20px auto;
+  display: inline-block;
+}

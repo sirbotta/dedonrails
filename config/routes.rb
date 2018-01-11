@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     resources :challenges, except: [:index], controller: 'chapters/challenges'
   end
 
-  root 'home#index'
-# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root 'adventures/my_adventures#index'
+
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
