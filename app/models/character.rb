@@ -7,6 +7,8 @@ class Character < ApplicationRecord
   belongs_to :party
   belongs_to :user
 
+  has_many :inventory_items
+
   def str_bonus
     calc_ability_bonus(str)
   end
