@@ -1,6 +1,8 @@
-<nav>
-  <div class="nav-wrapper  indigo accent-3">
-    <a href=<%= root_path %> class="brand-logo"><img class="responsive-img" src=<%= image_path('logo.jpg') %> width="50" height="50"></a>
+<nav id="common-nav">
+  <div class="nav-wrapper row">
+    <a href=<%= root_path %> class="brand-logo">
+      <img class="responsive-img" src=<%= image_path('logo_white.png') %> width="40" style="margin-top: 10px">
+    </a>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       <li><%= link_to 'My Adventures', controller: 'adventures/my_adventures' %></li>
       <li><%= link_to 'My Characters', controller: 'characters/my_characters' %></li>

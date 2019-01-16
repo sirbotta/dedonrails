@@ -62,4 +62,4 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Use Devise as authentication solution
-gem 'devise'
+gem 'devise', '~> 4.4.3'

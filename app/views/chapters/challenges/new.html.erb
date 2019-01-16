@@ -8,35 +8,80 @@
         <div class="collapsible-header"><i class="material-icons">explore</i>Exploration</div>
         <div class="collapsible-body">
           <%= form_for([@chapter, @challenge]) do |form| %>
+            <div class="row">
+              <div class="input-field col s12">
+                <%= form.label :title %><br>
+                <%= form.text_field :title %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <%= form.label :text %><br>
+                <%= form.text_area :text, class: 'materialize-textarea' %>
+              </div>
+            </div>
+            <%= fields_for(@exploration) do |form| %>
               <div class="row">
                 <div class="input-field col s12">
-                  <%= form.label :title %><br>
-                  <%= form.text_field :title %>
+                  <%= form.label :context %><br>
+                  <%= form.text_field :context %>
                 </div>
               </div>
-              <div class="row">
-                <div class="input-field col s12">
-                  <%= form.label :text %><br>
-                  <%= form.text_area :text, class: 'materialize-textarea' %>
-                </div>
-              </div>
-              <div class="row">
-                <%= form.hidden_field :challengeable_type, value: "Exploration" %>
-              </div>
-              <div class="row">
-                <%= form.submit class: 'btn waves-effect waves-light' %>
-              </div>
+            <% end %>
+            <div class="row">
+              <%= form.submit class: 'btn waves-effect waves-light' %>
+            </div>
           <% end %>
         </div>
       </li>
       <li>
         <div class="collapsible-header"><i class="material-icons">directions_run</i>Skill</div>
+
+
+        <!-- TODO actually implement the correct form -->
+
+        <div class="collapsible-body">
+          <%= form_for([@chapter, @challenge]) do |form| %>
+            <div class="row">
+              <div class="input-field col s12">
+                <%= form.label :title %><br>
+                <%= form.text_field :title %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <%= form.label :text %><br>
+                <%= form.text_area :text, class: 'materialize-textarea' %>
+              </div>
+            </div>
+            <%= fields_for(@skill_test) do |form| %>
+              <div class="row">
+                <div class="input-field col s12">
+                  <%= form.label :skill1 %><br>
+                  <%= form.text_field :skill1 %>
+                </div>
+              </div>
+            <% end %>
+            <div class="row">
+              <%= form.submit class: 'btn waves-effect waves-light' %>
+            </div>
+          <% end %>
+        </div>
+      </li>
+      <li>
+        <div class="collapsible-header"><i class="material-icons">record_voice_over</i>Social Interaction</div>
         <div class="collapsible-body">
 
         </div>
       </li>
       <li>
-        <div class="collapsible-header"><i class="material-icons">record_voice_over</i>Interaction</div>
+        <div class="collapsible-header"><i class="material-icons">terrain</i>Dungeon</div>
+        <div class="collapsible-body">
+
+        </div>
+      </li>
+      <li>
+        <div class="collapsible-header"><i class="material-icons">whatshot</i>Combat</div>
         <div class="collapsible-body">
 
         </div>

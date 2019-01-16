@@ -1,0 +1,64 @@
+<div class="row">
+  <div class="col s12 ">
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">
+          <%= link_to act.title, act_path(act) %>
+          <%= link_to material_icon.edit, edit_act_path(act) %>
+          <%= link_to material_icon.delete_forever, act_path(act),
+                      method: :delete,
+                      data: {confirm: 'Are you sure?'} %>
+        </span>
+        <p>
+          <%= act.text %>
+        </p>
+
+
+        <div class="divider"></div>
+        <table>
+          <thead>
+          <tr>
+            <th> <%= link_to material_icon.add_box, new_act_npc_path(@act) %> Npcs</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% act.npcs.each do |npc| %>
+            <tr>
+              <td><%= npc.name %><%= link_to material_icon.edit, edit_npc_path(npc) %></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+        <div class="divider"></div>
+        <table>
+          <thead>
+          <tr>
+            <th><%= link_to material_icon.add_box, new_act_location_path(@act) %> Locations</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% act.locations.each do |location| %>
+            <tr>
+              <td><%= location.name %><%= link_to material_icon.edit, edit_location_path(location) %></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+        <table>
+          <thead>
+          <tr>
+            <th><%= link_to material_icon.add_box, new_act_rumor_path(@act) %> Rumors</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% act.rumors.each do |rumor| %>
+            <tr>
+              <td><%= rumor.name %><%= link_to material_icon.edit, edit_rumor_path(rumor) %></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

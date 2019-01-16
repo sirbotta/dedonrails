@@ -1,19 +1,19 @@
-<nav>
-  <div class="nav-wrapper">
+<nav class="breadcrumb-bar">
+  <div class="nav-wrapper row">
     <div class="col s12">
       <%= link_to 'Adventures', adventures_path, class: 'breadcrumb' %>
     </div>
   </div>
 </nav>
 <div class="container">
-  <ul class="collapsible" data-collapsible="expandable">
-    <% @adventures.each do |adventure| %>
-        <li>
-          <div class="collapsible-header"><%= adventure.title %></div>
-          <div class="collapsible-body"><span><%= render 'adventures/adventure', adventure: adventure %></span></div>
-        </li>
+  <div class="row">
+    <div class="col s12">
+      <% @adventures.each do |adventure| %>
+        <%= render 'adventures/adventure', adventure: adventure %>
+      <% end %>
 
-    <% end %>
-  </ul>
-  <p>add a new adventure <%= link_to material_icon.add, new_adventure_path, class: "btn-floating btn-large waves-effect waves-light red" %><p>
+      <%= link_to 'add a new adventure', new_adventure_path %>
+
+    </div>
+  </div>
 </div>

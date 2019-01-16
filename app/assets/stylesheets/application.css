@@ -14,3 +14,12 @@
  *= require material_icons
  *= require_self
  */
+
+
+.mini-image{
+    border: 1px solid rgba(0,0,0,.3);
+}
+
+.thumb-image{
+    border: 1px solid rgba(0,0,0,.3);
+}

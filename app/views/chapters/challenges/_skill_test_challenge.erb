@@ -1,0 +1,48 @@
+<div class="card">
+  <div class="card-content">
+    <span class="card-title"><h4><i class="small material-icons">directions_run</i>Skills Challenge</h4></span>
+    <p>
+      <%= skill_test.challenge.title %>
+    </p>
+    <p>
+      Description: <%= skill_test.challenge.text %>
+    </p>
+
+
+    <% skill_test.player_actions.each do |player_action| %>
+      <%= render 'chapters/challenges/action_card', player_action: player_action %>
+    <% end %>
+
+    <a class="modal-trigger" href="#modal_skill_test_<%= skill_test.id %>_action">Add Action
+      (<%= skill_test.party.find_character_by_user_id(current_user.id).try(:name) %>)</a>
+
+    <div id="modal_skill_test_<%= skill_test.id %>_action" class="modal">
+      <div class="modal-content">
+
+        <ul class="collapsible popout" data-collapsible="accordion">
+
+          <li>
+            <div class="collapsible-header">
+              <strong>Dummy</strong>
+            </div>
+            <div class="collapsible-body">
+              <%= form_with(model: [skill_test.challenge, skill_test.player_actions.build], local: true) do |form| %>
+                <div class="row">
+                  <div class="input-field col s8">
+                    <%= form.text_area :description, class: 'materialize-textarea' %>
+                    <%= form.label :description %>
+                  </div>
+                  <%= form.hidden_field :task_type, value: 'dummy' %>
+                </div>
+                <div class="row">
+                  <%= form.submit 'dummy', class: 'btn' %>
+                </div>
+              <% end %>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

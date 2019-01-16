@@ -1,8 +1,20 @@
+<nav class="breadcrumb-bar">
+  <div class="nav-wrapper row">
+    <div class="col s12">
+      <%= link_to 'My Adventures', my_adventures_path, class: 'breadcrumb' %>
+    </div>
+  </div>
+</nav>
 <div class="container">
+  <div class="row">
+    <div class="col s12">
+      <% @adventures.each do |adventure| %>
+        <%= render 'adventures/adventure', adventure: adventure %>
+      <% end %>
 
-  <% @adventures.each do |adventure| %>
-      <%= render 'adventures/adventure', adventure: adventure %>
-  <% end %>
-
-  <p>add a new adventure <%= link_to material_icon.add, new_adventure_path, class: "btn-floating btn-large waves-effect waves-light red" %><p>
+      <p>add a new
+        adventure <%= link_to material_icon.add, new_adventure_path, class: "btn-floating btn-large waves-effect waves-light red" %>
+      <p>
+    </div>
+  </div>
 </div>

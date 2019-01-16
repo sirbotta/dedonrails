@@ -2,13 +2,60 @@
   <div class="col s12">
     <div class="card">
       <div class="card-content">
-        <span class="card-title"><h2><%= chapter.title %></h2></span>
-        <div class="row">
-          Npcs:
+        <span class="card-title">
+          <%= link_to chapter.title, chapter_path(chapter) %>
+          <%= link_to material_icon.edit, edit_chapter_path(chapter) %>
+          <%= link_to material_icon.delete_forever, chapter_path(chapter),
+                      method: :delete,
+                      data: {confirm: 'Are you sure?'} %>
+        </span>
+        <p>
+          <%= chapter.text %>
+        </p>
+        <div class="divider"></div>
+        <table>
+          <thead>
+          <tr>
+            <th>Npcs</th>
+          </tr>
+          </thead>
+          <tbody>
           <% chapter.npcs.each do |npc| %>
-            <%= link_to npc.name, npc  %>
+            <tr>
+              <td><%= npc.name %><%= link_to material_icon.edit, edit_npc_path(npc) %></td>
+            </tr>
           <% end %>
-        </div>
+          </tbody>
+        </table>
+        <div class="divider"></div>
+        <table>
+          <thead>
+          <tr>
+            <th>Locations</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% chapter.locations.each do |location| %>
+            <tr>
+              <td><%= location.name %><%= link_to material_icon.edit, edit_location_path(location) %></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+        <table>
+          <thead>
+          <tr>
+            <th>Rumors</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% chapter.rumors.each do |rumor| %>
+            <tr>
+              <td><%= rumor.name %><%= link_to material_icon.edit, edit_rumor_path(rumor) %></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>

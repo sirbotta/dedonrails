@@ -1,5 +1,5 @@
-<nav>
-  <div class="nav-wrapper">
+<nav class="breadcrumb-bar">
+  <div class="nav-wrapper row">
     <div class="col s12">
       <%= link_to 'Adventures', adventures_path, class: 'breadcrumb' %>
       <%= link_to @act.adventure.title, adventure_path(@act.adventure), class: 'breadcrumb' %>
@@ -9,33 +9,17 @@
 </nav>
 
 <div class="container">
+  <div class="row">
+    <div class="col s8">
+      <% @act.chapters.each do |chapter| %>
+        <%= render 'acts/chapters/chapter', chapter: chapter %>
+      <% end %>
 
-  <%= render @act %>
+      <%= link_to 'Add a new chapter', new_act_chapter_path(@act) %>
+    </div>
+    <div class="col s4">
+      <%= render 'act_summary', act: @act %>
+    </div>
 
-  <h2>Chapters</h2>
-  <% @act.chapters.each do |chapter| %>
-      <%= render 'acts/chapters/chapter', chapter: chapter %>
-  <% end %>
-
-  <%= link_to 'Add a new chapter', new_act_chapter_path(@act) %>
-
-  <h2>Npcs</h2>
-
-  <table>
-    <thead>
-    <tr>
-      <th>Name</th>
-    </tr>
-    </thead>
-    <tbody>
-    <% @act.npcs.each do |npc| %>
-        <tr>
-          <td><%= npc.name %><%= link_to material_icon.edit, edit_npc_path(npc) %></td>
-        </tr>
-    <% end %>
-    </tbody>
-  </table>
-
-  <%= link_to 'Add a new Npc', new_act_npc_path(@act) %>
-
+  </div>
 </div>

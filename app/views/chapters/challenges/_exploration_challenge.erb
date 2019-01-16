@@ -7,22 +7,27 @@
     <p>
       Description: <%= exploration.challenge.text %>
     </p>
+    <p>
+      Context: <%= exploration.context %>
+    </p>
 
 
 
 
     <% exploration.player_actions.each do |player_action| %>
-        <%= render 'chapters/challenges/action_card', player_action: player_action %>
+      <%= render 'chapters/challenges/action_card', player_action: player_action %>
     <% end %>
 
-    <a class="modal-trigger" href="#modal_exploration<%= exploration.id %>_action">Add Action
-      (<%= exploration.party.find_character_by_user_id(current_user.id).try(:name) %>)</a>
+    <% if exploration.party.find_character_by_user_id(current_user.id) %>
 
-    <div id="modal_exploration<%= exploration.id %>_action" class="modal">
-      <div class="modal-content">
+      <a class="modal-trigger" href="#modal_exploration<%= exploration.id %>_action">Add Action
+        (<%= exploration.party.find_character_by_user_id(current_user.id).name %>)</a>
 
-        <ul class="collapsible popout" data-collapsible="accordion">
-          <% exploration.class::TASKS.each do |action, val| %>
+      <div id="modal_exploration<%= exploration.id %>_action" class="modal">
+        <div class="modal-content">
+
+          <ul class="collapsible popout" data-collapsible="accordion">
+            <% exploration.class::TASKS.each do |action, val| %>
               <li>
                 <div class="collapsible-header">
                   <strong><%= t(action) %></strong>
@@ -32,23 +37,25 @@
                 </div>
                 <div class="collapsible-body">
                   <%= form_with(model: [exploration.challenge, exploration.player_actions.build], local: true) do |form| %>
-                      <div class="row">
-                        <div class="input-field col s8">
-                          <%= form.text_area :description, class: 'materialize-textarea' %>
-                          <%= form.label :description %>
-                        </div>
-                        <%= render "chapters/challenges/target_#{val[:target]}", form: form %>
-                        <%= form.hidden_field :task_type, value: action %>
+                    <div class="row">
+                      <div class="input-field col s8">
+                        <%= form.text_area :description, class: 'materialize-textarea' %>
+                        <%= form.label :description %>
                       </div>
-                      <div class="row">
-                        <%= form.submit class: 'btn' %>
-                      </div>
+                      <%= render "chapters/challenges/target_#{val[:target]}", form: form %>
+                      <%= form.hidden_field :task_type, value: action %>
+                    </div>
+                    <div class="row">
+                      <%= form.submit t(action), class: 'btn' %>
+                    </div>
                   <% end %>
                 </div>
               </li>
-          <% end %>
-        </ul>
+            <% end %>
+          </ul>
+        </div>
       </div>
-    </div>
+
+    <% end %>
   </div>
 </div>

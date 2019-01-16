@@ -62,5 +62,10 @@ en:
   hill_dwarf: "Hill Dwarf"
   ### Exploration Tasks
   investigate: "Investigate"
-  Interrogate: "Interrogate"
+  interrogate: "Interrogate"
+  explore: "Explore"
+  spy: "Spy"
+  research: "Research"
+  examine: "Examine"
+  gather_information: "Gather Information"
 

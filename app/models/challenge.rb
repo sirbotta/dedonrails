@@ -3,9 +3,6 @@ class Challenge < ApplicationRecord
   belongs_to :challengeable, polymorphic: true
   has_many :targetable
 
-  def generate_challengeable(ch_type)
-    self.challengeable = ch_type.classify.constantize.new # remember to add the correct model
-  end
 
   def act
     chapter.act

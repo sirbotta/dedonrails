@@ -7,6 +7,19 @@ class Chapter < ApplicationRecord
     act.npcs
   end
 
+  def locations
+    act.locations
+  end
+
+  def rumors
+    act.rumors
+  end
+
+  def monsters
+    #act.monsters TODO
+    []
+  end
+
   def adventure
     act.adventure
   end

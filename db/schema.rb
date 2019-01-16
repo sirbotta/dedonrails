@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180102203405) do
+ActiveRecord::Schema.define(version: 20180311203406) do
 
   create_table "acts", force: :cascade do |t|
     t.string "title"
@@ -130,6 +130,19 @@ ActiveRecord::Schema.define(version: 20180102203405) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "locations", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
+    t.integer "act_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["act_id"], name: "index_locations_on_act_id"
+  end
+
   create_table "npcs", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -166,6 +179,35 @@ ActiveRecord::Schema.define(version: 20180102203405) do
     t.index ["actionable_type", "actionable_id"], name: "index_player_actions_on_actionable_type_and_actionable_id"
     t.index ["character_id"], name: "index_player_actions_on_character_id"
     t.index ["targetable_type", "targetable_id"], name: "index_player_actions_on_targetable_type_and_targetable_id"
+  end
+
+  create_table "rumors", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
+    t.integer "act_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["act_id"], name: "index_rumors_on_act_id"
+  end
+
+  create_table "skill_tests", force: :cascade do |t|
+    t.text "context"
+    t.text "skill1"
+    t.text "skill1_description"
+    t.integer "skill1_DC"
+    t.text "skill2"
+    t.text "skill2_description"
+    t.integer "skill2_DC", default: 10
+    t.text "skill3"
+    t.text "skill3_description"
+    t.integer "skill3_DC", default: 15
+    t.integer "other_skills_DC", default: 20
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "user_roles", force: :cascade do |t|
